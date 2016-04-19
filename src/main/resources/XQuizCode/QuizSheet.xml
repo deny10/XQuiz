@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+ * See the NOTICE file distributed with this work for additional
+ * information regarding copyright ownership.
+ *
+ * This is free software; you can redistribute it and/or modify it
+ * under the terms of the GNU Lesser General Public License as
+ * published by the Free Software Foundation; either version 2.1 of
+ * the License, or (at your option) any later version.
+ *
+ * This software is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
+ * Lesser General Public License for more details.
+ *
+ * You should have received a copy of the GNU Lesser General Public
+ * License along with this software; if not, write to the Free
+ * Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA
+ * 02110-1301 USA, or see the FSF site: http://www.fsf.org.
+-->
+
+<xwikidoc version="1.1">
+  <web>XQuizCode</web>
+  <name>QuizSheet</name>
+  <language/>
+  <defaultLanguage/>
+  <translation>0</translation>
+  <creator>xwiki:XWiki.Admin</creator>
+  <creationDate>1460645741000</creationDate>
+  <parent>XQuizCode.QuizClass</parent>
+  <author>xwiki:XWiki.Admin</author>
+  <contentAuthor>xwiki:XWiki.Admin</contentAuthor>
+  <date>1461084887000</date>
+  <contentUpdateDate>1461084887000</contentUpdateDate>
+  <version>1.1</version>
+  <title>#if($doc.name == 'QuizSheet')Quiz Sheet#{else}$services.display.title($doc, {'displayerHint': 'default'})#end</title>
+  <comment/>
+  <minorEdit>false</minorEdit>
+  <syntaxId>xwiki/2.1</syntaxId>
+  <hidden>true</hidden>
+  <content>{{velocity}}
+## Only the editor can see the quiz
+#if($hasEdit)
+#set($discard  = $xwiki.ssx.use('XQuizCode.WebHome'))
+#set($class = $doc.getObject('XQuizCode.QuizClass').xWikiClass)
+#foreach($prop in $class.properties)
+  ; $prop.prettyName
+  : $doc.display($prop.getName())
+#end
+## Using a simple local variable for formating localization
+#set($local = $services.localization)
+## ---------------------------------------------------------------------------------------------------------
+## List the questions of quiz
+## ---------------------------------------------------------------------------------------------------------
+#set($questions = $doc.getObjects('XQuizCode.QuestionClass'))
+#if($questions.size()&gt;0)
+	#foreach($quest in $questions)
+(% class='QuestionBloc' %)(((
+	(% class='QuestHeader' %)(((
+		**$local.render('xquiz.quizsheet.questions') $velocityCount :** $quest.get('questionTitle')(% class='correctAnswer' %)$local.render('xquiz.quizsheet.correctanswer') : $quest.get('correctAnswer')
+	)))
+    #foreach($i in [1..5])
+        #set($answer = $!quest.get("answer${i}")) ##
+        #if($xcontext.action == "view") #set($answer = $escapetool.html($answer)) #end ##
+		* $answer
+    #end
+)))
+	#end
+#else
+
+{{info}}
+$local.render('xquiz.quizsheet.noquestion')
+{{/info}}
+#end
+
+
+## ---------------------------------------------------------------------------------------------------------
+## Create new Question form
+## ---------------------------------------------------------------------------------------------------------
+{{html}}
+  &lt;form action="$doc.getURL('edit','xpage=editobject')" id="newdoc" method="post"&gt;
+    &lt;div&gt;
+      &lt;input type="hidden" name="xaction" value="addObject" /&gt;
+      &lt;input type="hidden" name="form_token" value="$!{services.csrf.getToken()}" /&gt;
+      &lt;input type="hidden" name="className" value="XQuizCode.QuestionClass"/&gt;
+      &lt;input type="hidden" name="xredirect" value="$doc.getURL('edit')"/&gt;
+      &lt;span class="buttonwrapper"&gt;&lt;input type="submit" value="$local.render('xquiz.quizsheet.addquestion')" class="btnAdd"/&gt;&lt;/span&gt;
+    &lt;/div&gt;
+    &lt;br&gt;
+  &lt;/form&gt;
+{{/html}}
+
+{{info}}
+$local.render('xquiz.quizsheet.quizinfo')
+
+{{{ {{DisplayQuiz quiz='$doc.fullName' /}} }}}
+
+* [[$local.render('xquiz.displayquizmacro.startbtn')&gt;&gt;XQuiz.DisplayQuiz||queryString="quiz=$doc.fullName"]]
+{{/info}}
+
+#else
+$response.sendRedirect($xwiki.getURL('XQuiz.DisplayQuiz','view',"quiz=$doc"))
+#end
+{{/velocity}}</content>
+</xwikidoc>

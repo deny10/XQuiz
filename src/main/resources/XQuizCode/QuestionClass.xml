@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+ * See the NOTICE file distributed with this work for additional
+ * information regarding copyright ownership.
+ *
+ * This is free software; you can redistribute it and/or modify it
+ * under the terms of the GNU Lesser General Public License as
+ * published by the Free Software Foundation; either version 2.1 of
+ * the License, or (at your option) any later version.
+ *
+ * This software is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
+ * Lesser General Public License for more details.
+ *
+ * You should have received a copy of the GNU Lesser General Public
+ * License along with this software; if not, write to the Free
+ * Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA
+ * 02110-1301 USA, or see the FSF site: http://www.fsf.org.
+-->
+
+<xwikidoc version="1.1">
+  <web>XQuizCode</web>
+  <name>QuestionClass</name>
+  <language/>
+  <defaultLanguage/>
+  <translation>0</translation>
+  <creator>xwiki:XWiki.Admin</creator>
+  <creationDate>1460645976000</creationDate>
+  <parent>XQuizCode.WebHome</parent>
+  <author>xwiki:XWiki.Admin</author>
+  <contentAuthor>xwiki:XWiki.Admin</contentAuthor>
+  <date>1460876156000</date>
+  <contentUpdateDate>1460876140000</contentUpdateDate>
+  <version>1.1</version>
+  <title/>
+  <comment/>
+  <minorEdit>false</minorEdit>
+  <syntaxId>xwiki/2.1</syntaxId>
+  <hidden>true</hidden>
+  <content/>
+  <class>
+    <name>XQuizCode.QuestionClass</name>
+    <customClass/>
+    <customMapping/>
+    <defaultViewSheet/>
+    <defaultEditSheet/>
+    <defaultWeb/>
+    <nameField/>
+    <validationScript/>
+    <answer1>
+      <customDisplay/>
+      <disabled>0</disabled>
+      <name>answer1</name>
+      <number>2</number>
+      <picker>0</picker>
+      <prettyName>answer1</prettyName>
+      <size>30</size>
+      <unmodifiable>0</unmodifiable>
+      <validationMessage/>
+      <validationRegExp/>
+      <classType>com.xpn.xwiki.objects.classes.StringClass</classType>
+    </answer1>
+    <answer2>
+      <customDisplay/>
+      <disabled>0</disabled>
+      <name>answer2</name>
+      <number>3</number>
+      <picker>0</picker>
+      <prettyName>answer2</prettyName>
+      <size>30</size>
+      <unmodifiable>0</unmodifiable>
+      <validationMessage/>
+      <validationRegExp/>
+      <classType>com.xpn.xwiki.objects.classes.StringClass</classType>
+    </answer2>
+    <answer3>
+      <customDisplay/>
+      <disabled>0</disabled>
+      <name>answer3</name>
+      <number>4</number>
+      <picker>0</picker>
+      <prettyName>answer3</prettyName>
+      <size>30</size>
+      <unmodifiable>0</unmodifiable>
+      <validationMessage/>
+      <validationRegExp/>
+      <classType>com.xpn.xwiki.objects.classes.StringClass</classType>
+    </answer3>
+    <answer4>
+      <customDisplay/>
+      <disabled>0</disabled>
+      <name>answer4</name>
+      <number>5</number>
+      <picker>0</picker>
+      <prettyName>answer4</prettyName>
+      <size>30</size>
+      <unmodifiable>0</unmodifiable>
+      <validationMessage/>
+      <validationRegExp/>
+      <classType>com.xpn.xwiki.objects.classes.StringClass</classType>
+    </answer4>
+    <answer5>
+      <customDisplay/>
+      <disabled>0</disabled>
+      <name>answer5</name>
+      <number>6</number>
+      <picker>0</picker>
+      <prettyName>answer5</prettyName>
+      <size>30</size>
+      <unmodifiable>0</unmodifiable>
+      <validationMessage/>
+      <validationRegExp/>
+      <classType>com.xpn.xwiki.objects.classes.StringClass</classType>
+    </answer5>
+    <correctAnswer>
+      <cache>0</cache>
+      <customDisplay/>
+      <disabled>0</disabled>
+      <displayType>select</displayType>
+      <multiSelect>0</multiSelect>
+      <name>correctAnswer</name>
+      <number>8</number>
+      <picker>0</picker>
+      <prettyName>correctAnswer</prettyName>
+      <relationalStorage>0</relationalStorage>
+      <separator> </separator>
+      <separators>|, </separators>
+      <size>1</size>
+      <sort>none</sort>
+      <unmodifiable>0</unmodifiable>
+      <validationMessage/>
+      <validationRegExp/>
+      <values>answer1|answer2|answer3|answer4|answer5</values>
+      <classType>com.xpn.xwiki.objects.classes.StaticListClass</classType>
+    </correctAnswer>
+    <questionTitle>
+      <customDisplay/>
+      <disabled>0</disabled>
+      <name>questionTitle</name>
+      <number>1</number>
+      <picker>0</picker>
+      <prettyName>questionTitle</prettyName>
+      <size>30</size>
+      <unmodifiable>0</unmodifiable>
+      <validationMessage/>
+      <validationRegExp/>
+      <classType>com.xpn.xwiki.objects.classes.StringClass</classType>
+    </questionTitle>
+  </class>
+  <object>
+    <name>XQuizCode.QuestionClass</name>
+    <number>0</number>
+    <className>XWiki.DocumentSheetBinding</className>
+    <guid>dc2e2588-53a3-4171-a396-11f6d3b43803</guid>
+    <class>
+      <name>XWiki.DocumentSheetBinding</name>
+      <customClass/>
+      <customMapping/>
+      <defaultViewSheet/>
+      <defaultEditSheet/>
+      <defaultWeb/>
+      <nameField/>
+      <validationScript/>
+      <sheet>
+        <customDisplay/>
+        <disabled>0</disabled>
+        <name>sheet</name>
+        <number>1</number>
+        <picker>0</picker>
+        <prettyName>Sheet</prettyName>
+        <size>30</size>
+        <unmodifiable>0</unmodifiable>
+        <validationMessage/>
+        <validationRegExp/>
+        <classType>com.xpn.xwiki.objects.classes.StringClass</classType>
+      </sheet>
+    </class>
+    <property>
+      <sheet>XWiki.ClassSheet</sheet>
+    </property>
+  </object>
+</xwikidoc>

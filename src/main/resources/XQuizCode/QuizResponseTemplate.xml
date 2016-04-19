@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+ * See the NOTICE file distributed with this work for additional
+ * information regarding copyright ownership.
+ *
+ * This is free software; you can redistribute it and/or modify it
+ * under the terms of the GNU Lesser General Public License as
+ * published by the Free Software Foundation; either version 2.1 of
+ * the License, or (at your option) any later version.
+ *
+ * This software is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
+ * Lesser General Public License for more details.
+ *
+ * You should have received a copy of the GNU Lesser General Public
+ * License along with this software; if not, write to the Free
+ * Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA
+ * 02110-1301 USA, or see the FSF site: http://www.fsf.org.
+-->
+
+<xwikidoc version="1.1">
+  <web>XQuizCode</web>
+  <name>QuizResponseTemplate</name>
+  <language/>
+  <defaultLanguage/>
+  <translation>0</translation>
+  <creator>xwiki:XWiki.Admin</creator>
+  <creationDate>1460647261000</creationDate>
+  <parent>XQuizCode.QuizResponseClass</parent>
+  <author>xwiki:XWiki.Admin</author>
+  <contentAuthor>xwiki:XWiki.Admin</contentAuthor>
+  <date>1460647267000</date>
+  <contentUpdateDate>1460647267000</contentUpdateDate>
+  <version>1.1</version>
+  <title>QuizResponse Template</title>
+  <comment/>
+  <minorEdit>false</minorEdit>
+  <syntaxId>xwiki/2.1</syntaxId>
+  <hidden>true</hidden>
+  <content/>
+  <object>
+    <name>XQuizCode.QuizResponseTemplate</name>
+    <number>0</number>
+    <className>XQuizCode.QuizResponseClass</className>
+    <guid>80ff8536-e9e9-4279-b073-894243da2777</guid>
+    <class>
+      <name>XQuizCode.QuizResponseClass</name>
+      <customClass/>
+      <customMapping/>
+      <defaultViewSheet/>
+      <defaultEditSheet/>
+      <defaultWeb/>
+      <nameField/>
+      <validationScript/>
+      <note>
+        <customDisplay/>
+        <disabled>0</disabled>
+        <name>note</name>
+        <number>3</number>
+        <picker>0</picker>
+        <prettyName>note</prettyName>
+        <size>30</size>
+        <unmodifiable>0</unmodifiable>
+        <validationMessage/>
+        <validationRegExp/>
+        <classType>com.xpn.xwiki.objects.classes.StringClass</classType>
+      </note>
+      <quiz>
+        <cache>0</cache>
+        <classname>XQuizCode.QuizClass</classname>
+        <customDisplay/>
+        <disabled>0</disabled>
+        <displayType>select</displayType>
+        <idField>doc.fullName</idField>
+        <multiSelect>0</multiSelect>
+        <name>quiz</name>
+        <number>2</number>
+        <picker>1</picker>
+        <prettyName>quiz</prettyName>
+        <relationalStorage>0</relationalStorage>
+        <separator> </separator>
+        <separators/>
+        <size>1</size>
+        <sort>none</sort>
+        <sql/>
+        <unmodifiable>0</unmodifiable>
+        <validationMessage/>
+        <validationRegExp/>
+        <valueField>doc.fullName</valueField>
+        <classType>com.xpn.xwiki.objects.classes.DBListClass</classType>
+      </quiz>
+      <time>
+        <customDisplay/>
+        <disabled>0</disabled>
+        <name>time</name>
+        <number>4</number>
+        <picker>0</picker>
+        <prettyName>time</prettyName>
+        <size>30</size>
+        <unmodifiable>0</unmodifiable>
+        <validationMessage/>
+        <validationRegExp/>
+        <classType>com.xpn.xwiki.objects.classes.StringClass</classType>
+      </time>
+      <user>
+        <cache>0</cache>
+        <customDisplay/>
+        <disabled>0</disabled>
+        <displayType>input</displayType>
+        <multiSelect>0</multiSelect>
+        <name>user</name>
+        <number>1</number>
+        <picker>1</picker>
+        <prettyName>user</prettyName>
+        <relationalStorage>0</relationalStorage>
+        <separator> </separator>
+        <separators/>
+        <size>20</size>
+        <sort>none</sort>
+        <unmodifiable>0</unmodifiable>
+        <usesList>0</usesList>
+        <validationMessage/>
+        <validationRegExp/>
+        <classType>com.xpn.xwiki.objects.classes.UsersClass</classType>
+      </user>
+    </class>
+    <property>
+      <note/>
+    </property>
+    <property>
+      <quiz/>
+    </property>
+    <property>
+      <time/>
+    </property>
+    <property>
+      <user/>
+    </property>
+  </object>
+</xwikidoc>

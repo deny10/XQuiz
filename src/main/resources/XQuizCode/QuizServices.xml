@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+ * See the NOTICE file distributed with this work for additional
+ * information regarding copyright ownership.
+ *
+ * This is free software; you can redistribute it and/or modify it
+ * under the terms of the GNU Lesser General Public License as
+ * published by the Free Software Foundation; either version 2.1 of
+ * the License, or (at your option) any later version.
+ *
+ * This software is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
+ * Lesser General Public License for more details.
+ *
+ * You should have received a copy of the GNU Lesser General Public
+ * License along with this software; if not, write to the Free
+ * Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA
+ * 02110-1301 USA, or see the FSF site: http://www.fsf.org.
+-->
+
+<xwikidoc version="1.1">
+  <web>XQuizCode</web>
+  <name>QuizServices</name>
+  <language/>
+  <defaultLanguage/>
+  <translation>0</translation>
+  <creator>xwiki:XWiki.Admin</creator>
+  <creationDate>1460870681000</creationDate>
+  <parent>XQuizCode.WebHome</parent>
+  <author>xwiki:XWiki.Admin</author>
+  <contentAuthor>xwiki:XWiki.Admin</contentAuthor>
+  <date>1461016983000</date>
+  <contentUpdateDate>1461016983000</contentUpdateDate>
+  <version>1.1</version>
+  <title/>
+  <comment/>
+  <minorEdit>false</minorEdit>
+  <syntaxId>xwiki/2.1</syntaxId>
+  <hidden>true</hidden>
+  <content>{{velocity}}
+## this is a service page
+## ---------------------------------------------------------------------------------------------------------
+## Create new Quiz service
+## ---------------------------------------------------------------------------------------------------------
+#if("$!request.action" == "createNewQuiz")
+  ## Check if the user has admin right
+  #if($xwiki.hasAccessLevel('admin',$xcontext.user,'XQuiz.WebHome'))
+    ## Creating a new quiz doc.
+    #set($targetDocName = "${request.spaceName}.${request.quizTitle}")
+    #if(!$xwiki.exists($targetDocName))
+      ## get the new quiz document
+      #set($quizDoc = $xwiki.getDocument($targetDocName))
+      #set($discard = $quizDoc.setTitle($request.quizTitle))
+      #set($discard = $quizDoc.setParent($request.parent))
+      #set($discard = $quizDoc.newObject('XQuizCode.QuizClass'))
+      #set($discard = $quizDoc.set('quizTitle',$request.quizTitle))
+      #set($discard = $quizDoc.set('published',0))
+      ## Using a simple local variable for formating localization
+      #set($local = $services.localization)
+      #set($discard = $quizDoc.saveAsAuthor($local.render('xquiz.service.createnewquiz')))
+      ok : $quizDoc
+      $response.sendRedirect($xwiki.getURL('XQuiz.WebHome'))
+    #else
+      exists
+	#end
+  #else
+    no permissions
+  #end
+#elseif("$!request.action" == "createQuizResponse")
+  ## ---------------------------------------------------------------------------------------------------------
+  ## Create Quiz response
+  ## ---------------------------------------------------------------------------------------------------------
+  #if("$!request.quiz" != "")
+    #set($spaceResult = "XQuizResults" )
+    ## Creating a new response doc.
+    #set($responsePagename = $xwiki.getUniquePageName($spaceResult,"result"))
+    #set($responseDocName = "${spaceResult}.${responsePagename}")
+    #if(!$xwiki.exists($targetDocName))
+      ## get the new quiz document
+      #set($responseDoc = $xwiki.getDocument($responseDocName))
+      #set($discard = $responseDoc.setTitle("Result of user"))
+      #set($discard = $responseDoc.setParent("${spaceResult}.WebHome"))
+      ## ------------------------------------------------------------------------
+      ## Creating the quiz response class
+      ## ------------------------------------------------------------------------
+      #set($discard = $responseDoc.newObject('XQuizCode.QuizResponseClass'))
+      #set($discard = $responseDoc.set('user',$xcontext.user))
+      #set($discard = $responseDoc.set('quiz',$request.quiz))
+      #set($discard = $responseDoc.set('note',$request.note))
+      ## ------------------------------------------------------------------------
+      ## Creating the response for each question
+      ## ------------------------------------------------------------------------
+      #set($userAnswers = $request.getParameterValues('userAnswers'))
+      #foreach($answer in $userAnswers)
+        #set($answerObj = $responseDoc.newObject('XQuizCode.QuestionResponseClass'))
+        ## Evaluate the obj number
+        #set($objNumber = $mathtool.sub($velocityCount,1))
+        #set($discard = $answerObj.set('questionId',"$objNumber"))
+        #set($discard = $answerObj.set('response',"$answer"))
+      #end
+      #set($discard = $responseDoc.saveAsAuthor($local.render('xquiz.service.createnewresponse')))
+      $responseDoc.getURL()
+      ## $response.sendRedirect($xwiki.getURL('XQuiz.WebHome'))
+    #else
+      exists
+    #end
+  #end
+#end
+{{/velocity}}</content>
+</xwikidoc>
